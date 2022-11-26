@@ -1,0 +1,4 @@
+{
+    "editor.formatOnSave": true, // mỗi khi save 
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // fomat lại code
+}
