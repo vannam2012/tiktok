@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    flex-direction: column; // cho sibar nằm dọc 
+    align-items: center; // căn giữa
+}
+.container{
+    width: var( --default-layout-width);
+    min-height: 1000px;
+    // cho ngang Sidebar và content 
+    display: flex;
+}
+.content{
+    flex: 1;
+    min-height: 1000px;
+    background-color: orange;
+}
