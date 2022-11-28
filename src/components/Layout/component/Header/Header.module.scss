@@ -1,12 +1,83 @@
-.wrapper{
-    width: 100%; // để khong bị cho mất box-shadow
-    height:  var(--defalt-layout-header-height);
-    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
-    display: flex;
-    justify-content: center;
+.wrapper {
+   --search-boder-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-button-width: 52px;
+
+
+   width: 100%; // để khong bị cho mất box-shadow
+   height: var(--defalt-layout-header-height);
+   box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+   display: flex;
+   justify-content: center;
 }
-.inner{
-    height:  100%;
-    width: var( --default-layout-width);
-    background-color: #ccc;
+.inner {
+   height: 100%;
+   width: var(--default-layout-width);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.search {
+   position: relative;
+   width: 361px;
+   height: var( --search-height);
+   background: rgba(22, 24, 35, 0.06);
+   border-radius: var(--search-boder-radius);
+   padding-left: 16px;
+   display: flex;
+   border:   1.5px solid transparent;
+   input {
+      flex: 1;
+      color: var(--black);
+      font-size: 1.6rem;
+      background-color: transparent;
+      padding: 12px 0;
+      caret-color: var(--primary);
+   }
+
+   input:not(:placeholder-shown) ~ .search-btn{
+      color: #333;
+
+   }
+   &::after{
+    position: absolute;
+    content: "";
+    height: calc(var( --search-height) - var(--search-top-spacer) * 2);
+    background-color: rgba(22, 24, 35, 0.12); 
+    width: 1px;
+    top: 9px;
+    right:var(--search-button-width);
+   }
+   &:focus-within{
+    border-color:   rgba(22, 24, 35, 0.2);
+   }
+}
+.clear,
+.loading {
+   position: absolute;
+   color: rgba(22, 24, 35, 0.34);
+   top: 50%;
+   transform: translateY(-50%);
+   right: calc(var(--search-button-width) + 16px);
+   
+
+}
+.search-btn {
+   width: var(--search-button-width);
+   height: 100%;
+   border-top-right-radius: var(--search-boder-radius);
+   border-bottom-right-radius: var(--search-boder-radius);
+   font-size: 2rem;
+   color:rgba(22, 24, 35, 0.34); 
+
+   &:hover{
+    background-color: rgba(22, 24, 35, 0.03);
+   }
+
+
+}
+.action {
+   background-color: red;
 }
