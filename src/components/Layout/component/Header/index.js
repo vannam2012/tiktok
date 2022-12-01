@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSignIn, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+   faCircleXmark,
+   faEllipsisVertical,
+   faMagnifyingGlass,
+   faSignIn,
+   faSpinner,
+   faEarthAsia,
+   faKeyboard,
+   faCircleQuestion,
+} from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Menu from '~/components/Popper/Menu';
 
 import Tippy from '@tippyjs/react/headless';
 
@@ -13,13 +23,28 @@ import images from '~/assets/images';
 
 const cx = classNames.bind(styles);
 
+const MENU_ITEMS = [
+   {
+      icon: <FontAwesomeIcon icon={faEarthAsia} />,
+      title: 'English',
+   },
+   {
+      icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+      title: 'Feedback and hefp',
+      to: '/feedback',
+   },
+   {
+      icon: <FontAwesomeIcon icon={faKeyboard} />,
+      title: 'Keyboard shortcuts',
+   },
+];
+
 function Header() {
-   // viết mảng acout khi ấn vào thẻ input một cái gì đó và sẽ hiện ra mảng acout
    const [searchResult, setSearchResult] = useState([]);
 
    useEffect(() => {
       setTimeout(() => {
-         setSearchResult([1, 2]); // sau 3s thì mảng có thêm 2 kết quả tìm kiếm
+         setSearchResult([1, 2]);
       }, 0);
    }, []);
    return (
@@ -27,9 +52,8 @@ function Header() {
          <div className={cx('inner')}>
             <img src={images.logo} alt="Tiktok" />
             <Tippy
-               // để có thể tương tác với nội dung bên trong thì phải dùng props interactive, interactive: mặc định là false
-               interactive // thêm vào đây là true
-               visible={searchResult.length > 0} // nếu kết quả tìm kiếm > 0 thì mới thì mới hiện
+               interactive
+               visible={searchResult.length > 0}
                render={(attrs) => (
                   <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                      <PopperWrapper>
@@ -56,8 +80,15 @@ function Header() {
 
             <div className={cx('action')}>
                <Button text>Upload</Button>
-               <Button primary  leftIcon={<FontAwesomeIcon icon={faSignIn} />}>Log in</Button>
+               <Button primary leftIcon={<FontAwesomeIcon icon={faSignIn} />}>
+                  Log in
+               </Button>
 
+               <Menu items={MENU_ITEMS}>
+                  <button className={cx('more-btn')}>
+                     <FontAwesomeIcon icon={faEllipsisVertical} />
+                  </button>
+               </Menu>
             </div>
          </div>
       </header>
