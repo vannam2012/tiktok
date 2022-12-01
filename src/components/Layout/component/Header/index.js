@@ -27,6 +27,21 @@ const MENU_ITEMS = [
    {
       icon: <FontAwesomeIcon icon={faEarthAsia} />,
       title: 'English',
+      children:{
+         title: 'Language',
+         data:[
+            {
+               type:'language',
+               code: 'en',
+               title: 'English'
+            },
+            {
+               type:'language',
+               code: 'vi',
+               title: 'Tiếng Việt'
+            }
+         ]
+      }
    },
    {
       icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -47,6 +62,12 @@ function Header() {
          setSearchResult([1, 2]);
       }, 0);
    }, []);
+
+   //hanleLogic
+   const hanleMenuChange =(menuItem) =>{
+      
+      console.log(menuItem)
+   }
    return (
       <header className={cx('wrapper')}>
          <div className={cx('inner')}>
@@ -56,7 +77,7 @@ function Header() {
                visible={searchResult.length > 0}
                render={(attrs) => (
                   <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                     <PopperWrapper>
+                     <PopperWrapper >
                         <h4 className={cx('search-title')}>Accounts</h4>
                         <AccountItem />
                         <AccountItem />
@@ -84,7 +105,7 @@ function Header() {
                   Log in
                </Button>
 
-               <Menu items={MENU_ITEMS}>
+               <Menu items={MENU_ITEMS} onChange={hanleMenuChange}> 
                   <button className={cx('more-btn')}>
                      <FontAwesomeIcon icon={faEllipsisVertical} />
                   </button>

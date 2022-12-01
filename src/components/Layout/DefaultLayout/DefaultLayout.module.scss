@@ -8,6 +8,8 @@
     min-height: 1000px;
     // cho ngang Sidebar và content 
     display: flex;
+   padding: 0 var(--default-layout-horizontal-space);
+
 }
 .content{
     flex: 1;
