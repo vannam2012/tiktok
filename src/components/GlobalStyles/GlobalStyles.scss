@@ -3,7 +3,7 @@
 
 :root {
     --primary: rgba(254, 44, 85, 1);
-    --black: #000;
+    --black: rgb(32, 30, 30);
     --white: #fff;
 
     //DefaltLayout
@@ -36,3 +36,31 @@ a[href]{
     color: var(--black);
     text-decoration: none;
 }
+// Custom tippy tooltip
+body{
+    .tippy-box {
+        background-color: rgba(84, 84, 84, 0.92);
+       font-size: 1.6rem;
+       line-height: 2.2rem;
+       font-weight: 600;
+       border-radius: 8px;
+    }
+       .tippy-arrow{
+        background-color: rgba(84, 84, 84, 0.92);
+      }
+      .tippy-content{
+        padding: 8px 9px;
+      }
+
+      .tippy-box[data-placement^=bottom]>.tippy-arrow {
+        top: 1px;
+        background-color: rgba(84, 84, 84, 0.92);
+    }
+} 
+    
+    
+
+
+    
+
+

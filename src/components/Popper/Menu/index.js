@@ -41,9 +41,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
    };
    return (
       <Tippy
-         visible
          interactive // để có thể tương tác với nội dung bên trong thì phải dùng props interactive,
          delay={[0, 500]}
+         offset= {[12, 8 ]}
          placement="bottom-end" //vị trí
          render={(attrs) => (
             <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
@@ -55,6 +55,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                </PopperWrapper>
             </div>
          )}
+         onHidden={() => setHistory(prev => prev.slice(0, 1))} // chỉ lấy từ cấp 0 -> cấp 1
       >
          {children}
       </Tippy>
